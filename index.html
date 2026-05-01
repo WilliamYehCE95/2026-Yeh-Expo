@@ -324,7 +324,7 @@
 
         // 生成指示點
         function initDots() {
-            dotsContainer.innerHTML = ''; // 清空舊的點
+            dotsContainer.innerHTML = ''; 
             heroImages.forEach((_, index) => {
                 const dot = document.createElement('div');
                 dot.className = `dot ${index === 0 ? 'active' : ''}`;
@@ -335,12 +335,8 @@
         // 切換至下一張圖片
         function nextHeroImage() {
             currentHeroIndex = (currentHeroIndex + 1) % heroImages.length;
-            
-            // 先淡出
             heroImgElement.classList.add('fade-out-img');
-            
             setTimeout(() => {
-                // 換圖並淡入
                 heroImgElement.src = heroImages[currentHeroIndex];
                 heroImgElement.onload = () => {
                     heroImgElement.classList.remove('fade-out-img');
@@ -372,6 +368,9 @@
         }, observerOptions);
 
         window.onload = () => {
+            // 強制捲動到最上方
+            window.scrollTo(0, 0);
+            
             initDots();
             document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
         };
