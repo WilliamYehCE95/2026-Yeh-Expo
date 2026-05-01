@@ -96,7 +96,7 @@
             -webkit-text-fill-color: transparent;
         }
 
-        /* 按鈕設計 */
+        /* 按鈕設計：新增 min-width 確保大小一致 */
         .btn-share {
             border: 1px solid var(--primary-purple);
             color: var(--primary-purple);
@@ -104,6 +104,10 @@
             transition: all 0.3s;
             letter-spacing: 0.2em;
             background: transparent;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 280px; /* 統一寬度設定 */
         }
 
         .btn-share:hover {
@@ -115,6 +119,7 @@
         @media (max-width: 768px) {
             h1 { font-size: 2rem !important; }
             .section-padding { padding-top: 4rem; padding-bottom: 4rem; }
+            .btn-share { min-width: 100%; } /* 手機版自動撐滿 */
         }
 
         .section-padding {
@@ -321,9 +326,17 @@
                         誠摯邀請您，在這場跨越世代的對話中，<br>
                         感受記憶的溫度與科技的美感。
                     </p>
-                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                    <div class="flex flex-col gap-4 items-center md:items-start">
+                        <!-- 所有的按鈕現在都具備相同的 min-width -->
                         <button onclick="share('threads')" class="btn-share">SHARE ON THREADS</button>
                         <button onclick="share('facebook')" class="btn-share">SHARE ON FB</button>
+                        <a href="mailto:williamyehce@gmail.com" class="btn-share">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-3">
+                                <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                            </svg>
+                            SEND ME AN EMAIL
+                        </a>
                     </div>
                 </div>
             </div>
